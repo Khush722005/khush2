@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> 
+</head>
+
+<body>
+    <div class="hero">
+        <nav>
+            <img src="final.jpg" class="logo">
+            <ul>
+                <li><a href="#hero">HOME</a></li>
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#contact">CONTACT ME</a></li>
+
+            </ul>
+
+        </nav>
+        <div class="detel">
+            <h1>Hi,I'm Khush<span> Kantesariya</span></h1>
+            <p>First Year student form Btech Computer Engineering.<br>
+                From Silver Oak University.</p>
+
+                <br><br><br><br><br>
+
+           
+        </div>
+        <!---------------about--------------->
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+
+                        <img src="11.png" class="image">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title">ABOUT ME</h1><br><br>
+                        <p>I am the beginner and the learner in this field and i like
+                            <br>to explore the things related to code. I am always
+                            <br>excited and interested to learn new things.I like to
+                            <br> work in team and i am also good in communication.
+                        </p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>Team work</span><br>I am good in doing work with team.</li>
+                                <li><span>Communication</span><br>I am good in communicate four
+                                    languages.<br>-Gujarati,Hindi,Marathi,English.</li>
+                                <li><span>Managment</span><br>I can manage things properly.</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>I am fresher</span><br> now this only is my first project.</span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>Schooling</span><br>Completed in 2022 from M.G.S.K. Gujarati
+                                    highschool,sangli.</span></li>
+                                <li><span>College</span><br>Currently in F.Y. in Silver Oak University.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br><br>
+        <!------------contact----------->
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left"><br>
+                        <h1 class="sub-title">Contact Me</h1>
+                        <p><i class="fa-sharp fa-solid fa-paper-plane"></i>khushpatel344@gmail.com</p>
+                        <p><i class="fa-solid fa-phone"></i>9356958539</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/khush.kantesariya.5?mibextid=ZbWKwL"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://instagram.com/ll_mr_khush_patel_lll?igshid=YmMyMTA2M2Y= "><i class="fa-brands fa-instagram"></i></a>
+         <br>
+                            <a href="1resume.png" download class="btn btn2">Download CV</a>
+                        </div>
+                    </div>
+                    <div class="contact-right">
+                        <form name="submit-to-google-sheet">
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="Email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                        <span id="msg"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname) {
+                for (tablink of tablinks) {
+                    tablink.classList.remove("active-link");
+                }
+                for (tabcontent of tabcontents) {
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+
+    
+        </script>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzUDp2pkpMmqz_5DzH8T1LBkC4gwlrxvC5wlCqC7izV0FuShdPHjgOFkVuAcxxAJq-DXw/exec'
+            const form = document.forms['submit-to-google-sheet']
+            const msg=document.getElementById("msg")
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)})
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+</body>
+
+</html>
